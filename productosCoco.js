@@ -19,7 +19,15 @@ productos.push ({id: crearID(),producto: "Escritorio", precio: 2100});
 productos.push ({id: crearID(),producto: "Mesa Nordica", precio: 1900});
 productos.push ({id: crearID(),producto: "Bandeja Matera", precio: 1750});
 
-//console.table(productos); 
+
+// Agregar productos al array atravez de prompt
+function agregarProductos() {
+    const id = crearID()
+    const producto = prompt("Ingresa el nombre del Producto que desea agregar:")
+    const precio = parseInt(prompt("Ingresa el importe:"))
+      
+    productos.push({id, producto, precio})
+}
 
 //Mostrar el precio Mayorista (10% de descuento)
 function precioMayorista() {
@@ -29,20 +37,13 @@ function precioMayorista() {
         console.log (producto.producto, "    $", precioMayorista)}
 }
 
+
 //Mostrar precio minorista (15% recargo) utilizando forEach
 function precioMinorista() {
     productos.forEach (function(producto, precio) {
     console.log (producto.producto);
     console.log (producto.precio + (producto.precio *0.15));
 });
-}
-// Agregar productos al array atravez de prompt
-function agregarProductos() {
-    const id = crearID()
-    const producto = prompt("Ingresa el nombre del Producto:")
-    const precio = parseInt(prompt("Ingresa el importe:"))
-      
-    productos.push({id, producto, precio})
 }
 
 //Buscar productos con el metodo find()
@@ -56,7 +57,7 @@ console.log(resultado);
 //Buscar producto utilizando filter e includes
 
 function productoFilter (){
-    let buscar = prompt ("Search:")
+    let buscar = prompt ("Producto buscado:")
     let resultado = productos.filter (element => element.producto.includes(buscar))
     console.table (resultado);
 }
@@ -68,5 +69,16 @@ function productoFilter (){
 let cantidadProductos = productos.length
 
 // Mostrar los objetos del array con sus propiedades:
-console.log (productos); 
+//console.table (productos);
+
+agregarProductos();
 console.table (productos);
+
+console.log("LISTA PRECIO MINORISTA")
+precioMinorista();
+
+console.log("LISTA PRECIO MAYORISTA")
+precioMayorista();
+
+console.log("PRODUCTO BUSCADO:")
+productoFilter ();

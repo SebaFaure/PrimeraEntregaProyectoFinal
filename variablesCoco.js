@@ -8,7 +8,8 @@ console.log(presentacion.toUpperCase());
 // Pedir nombre a travez de prompt para dar una binevenida personalizada.
 function bienvenidos (){
     let nombre = prompt ("Ingresa tu nombre:")
-    console.log("¡¡Hola ", nombre, " gracias por visitar nuestra pagina!!");
+    //console.log("¡¡Hola ", nombre, " gracias por visitar nuestra pagina!!");
+    alert ("¡¡Hola  "  + nombre.toUpperCase() +  "  gracias por visitar nuestra pagina!!");
 }
 
 // Funcion para crear automaticamente un numero de id
@@ -16,3 +17,4 @@ function crearID() {
     return parseInt(Math.random() * 1000)
 }
 
+bienvenidos ();
