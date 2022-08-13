@@ -37,5 +37,5 @@ console.log (Proveedor.apellido);
 //Variable para saber cuantos proveedores hay en el array
 let cantidadProveedores = proveedores.length
 
-console.log("LISTADO DE PROVEEDORES")
+console.log("LISTADO DE PROVEEDORES");
 agregarProveedores();
