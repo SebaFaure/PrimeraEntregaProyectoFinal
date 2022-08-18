@@ -17,13 +17,8 @@ function crearCards (){
       </div>`
     })   
 }
+crearCards ()
 
-function agregarFuncionalidad (){
-    productos.forEach (producto=> {
-
-
-    })
-}
 
 function verInformacion() {
     campos.forEach (campo => {
