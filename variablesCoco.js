@@ -1,4 +1,9 @@
-let bienvenida = "¡BIENVENIDOS A COCO MADERAS CORDOBA!"
+// Funcion para crear automaticamente un numero de id
+function crearID() { 
+    return parseInt(Math.random() * 1000)
+}
+
+/* let bienvenida = "¡BIENVENIDOS A COCO MADERAS CORDOBA!"
 
 let presentacion = "Somos una empresa dedicada a la fabricacion de productos en madera, destinados a satisfacer las necesidades del hogar"
 
@@ -11,10 +16,7 @@ function bienvenidos (){
     //console.log("¡¡Hola ", nombre, " gracias por visitar nuestra pagina!!");
     alert ("¡¡Hola  "  + nombre.toUpperCase() +  "  gracias por visitar nuestra pagina!!");
 }
+ */
 
-// Funcion para crear automaticamente un numero de id
-function crearID() { 
-    return parseInt(Math.random() * 1000)
-}
 
-bienvenidos ();
+//bienvenidos ();

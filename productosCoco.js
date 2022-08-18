@@ -1,3 +1,8 @@
+// Funcion para crear automaticamente un numero de id
+function crearID() { 
+    return parseInt(Math.random() * 1000)
+}
+
 // Creo el Array de productos de Coco maderas Cordoba
 const productos = [
     {id: crearID(),producto: "Especiero Gourmet x8", precio: 1600},
@@ -32,11 +37,11 @@ function agregarProductos() {
 //Mostrar el precio Mayorista (10% de descuento)
 function precioMayorista() {
     for (const producto of productos){
-        let precio =(producto.precio);
-        let precioMayorista = precio - (precio * 0.10)
-        console.log (producto.producto, "    $", precioMayorista)}
+        let precio = producto.precio - (producto.precio * 0.10);
+        console.log (producto) 
+        console.log (precio);
+    }
 }
-
 
 //Mostrar precio minorista (15% recargo) utilizando forEach
 function precioMinorista() {
@@ -49,29 +54,28 @@ function precioMinorista() {
 //Buscar productos con el metodo find()
 function buscarProducto (){
     const productoBuscado = prompt ("¿que producto busca?")
-const resultado = productos.find ((element) => element.producto === productoBuscado)
+const resultado = productos.find ((element) => element.producto == productoBuscado)
 console.log(resultado);
-
 }
 
 //Buscar producto utilizando filter e includes
 
-function productoFilter (){
+/* function productoFilter (){
     let buscar = prompt ("Producto buscado:")
     let resultado = productos.filter (element => element.producto.includes(buscar))
     console.table (resultado);
 }
-
+ */
 //eliminar el ultimo producto del array 
 //productos.pop ()
 
 //Variable para saber cuantos productos hay en el array
-let cantidadProductos = productos.length
+//let cantidadProductos = productos.length
 
 // Mostrar los objetos del array con sus propiedades:
 //console.table (productos);
 
-agregarProductos();
+/* agregarProductos();
 console.table (productos);
 
 console.log("LISTA PRECIO MINORISTA")
@@ -81,4 +85,4 @@ console.log("LISTA PRECIO MAYORISTA")
 precioMayorista();
 
 console.log("PRODUCTO BUSCADO:")
-productoFilter ();
+productoFilter (); */
