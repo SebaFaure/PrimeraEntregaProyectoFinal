@@ -2,7 +2,7 @@
 // Variables y Constantes
 const contenedorProductos = document.querySelector ("#contenedorProductos")
 const carritoDeCompras = document.querySelector ("#carritoDeCompras")
-let carrito =[];
+let carrito = JSON.parse (localStorage.getItem("carrito"))||[];
 const campos = document.querySelectorAll ("input")
 const botonBuscar = document.querySelector ("#botonBuscar")
 
@@ -20,8 +20,8 @@ const productos = [
 
 // Funcion para crear automaticamente un numero de id
 function crearID() { 
-    return parseInt(Math.random() * 1000)
-}
+    return parseInt(Math.random() * 100)
+}  
 
 
 //Mostrar el precio Mayorista (10% de descuento) por consola. para uso interno.
@@ -113,6 +113,9 @@ function VerProductosCarrito (producto){
                                         <td> <button id= "botonBorrar${producto.id}" class="btn btn-dark"> BORRAR </button></td>
                                     </tr>`
     }) 
+    
+    localStorage.setItem("carrito",JSON.stringify (carrito))
+
     BorrarProductoCarrito();
 }
 
@@ -130,3 +133,4 @@ function BorrarProductoCarrito() {
 
 focoEnCampos();
 crearCards ();
+AgregarAlCarrito();
