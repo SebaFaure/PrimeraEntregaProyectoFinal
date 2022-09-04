@@ -5,17 +5,19 @@ const carritoDeCompras = document.querySelector ("#carritoDeCompras")
 let carrito = JSON.parse (localStorage.getItem("carrito"))||[];
 const campos = document.querySelectorAll ("input")
 const botonBuscar = document.querySelector ("#botonBuscar")
+const btnAgregar = document.querySelectorAll (".btn btn-dark")
+
 
 //Array de productos de Coco maderas Cordoba
 const productos = [
-    {id: crearID(),producto: "Especiero Gourmet x8", precio: 1600, img:"imagenesProductos/especieroGourmet8.jpg", cantidad:""},
-    {id: crearID(),producto: "Especiero Gourmet x5", precio: 1200, img:"imagenesProductos/especieroGourmet5.jpg", cantidad:""},
-    {id: crearID(),producto: "Perchero Nordico 6 ganchos", precio: 3300, img:"imagenesProductos/percheroNordico6.jpg", cantidad:""},
-    {id: crearID(),producto: "Perchero Nordico 4 ganchos", precio: 3000, img:"imagenesProductos/percheroNordico4.jpg", cantidad:""},
-    {id: crearID(),producto: "Perchero Nordico Chico", precio: 2200, img:"imagenesProductos/percheroLineal.jpg", cantidad:""},
-    {id: crearID(),producto: "Huevera Premium x6", precio: 870, img:"imagenesProductos/hueveraPremium6.jpg", cantidad:""},
-    {id: crearID(),producto: "Huevera Premium x12", precio: 1300, img:"imagenesProductos/hueveraPremium12.jpg", cantidad:""},
-    {id: crearID(),producto: "Mesas Nordica x3", precio: 4950, img:"imagenesProductos/mesasNordicasX3.jpg", cantidad:""}
+    {id: 1, producto: "Especiero Gourmet x8", precio: 1600, img:"imagenesProductos/especieroGourmet8.jpg", cantidad:""},
+    {id: 2, producto: "Especiero Gourmet x5", precio: 1200, img:"imagenesProductos/especieroGourmet5.jpg", cantidad:""},
+    {id: 3, producto: "Perchero Nordico 6 ganchos", precio: 3300, img:"imagenesProductos/percheroNordico6.jpg", cantidad:""},
+    {id: 4, producto: "Perchero Nordico 4 ganchos", precio: 3000, img:"imagenesProductos/percheroNordico4.jpg", cantidad:""},
+    {id: 5, producto: "Perchero Nordico Chico", precio: 2200, img:"imagenesProductos/percheroLineal.jpg", cantidad:""},
+    {id: 6, producto: "Huevera Premium x6", precio: 870, img:"imagenesProductos/hueveraPremium6.jpg", cantidad:""},
+    {id: 7, producto: "Huevera Premium x12", precio: 1300, img:"imagenesProductos/hueveraPremium12.jpg", cantidad:""},
+    {id: 8, producto: "Mesas Nordica x3", precio: 4950, img:"imagenesProductos/mesasNordicasX3.jpg", cantidad:""}
 ]; 
 
 // Funcion para crear automaticamente un numero de id
@@ -38,8 +40,14 @@ function precioMayorista() {
 //Falta vincularlo con el boton buscar y mostrarlo en la pagina web
 function buscarProducto (){
     const productoBuscado = prompt ("¿que producto busca?")
-const resultado = productos.find ((element) => element.producto == productoBuscado)
-console.log(resultado);
+    if (productoBuscado != "") {
+        const resultado = productos.find ((element) => element.producto == productoBuscado)
+        console.log(resultado);
+    }
+    else{
+        console.log ("debe ingresar un producto")
+    }  
+       
 }
 
 // agregar evento a los elementos input
@@ -76,20 +84,21 @@ function crearCards (){
       </div>`
     }) 
     
-FuncionalidadBotonAgregar();  
+funcionalidadBotonAgregar();  
 }
 
-
-function FuncionalidadBotonAgregar() {
+function funcionalidadBotonAgregar() {
     productos.forEach((producto) => {
         document.querySelector (`#botonAgregar${producto.id}`) .addEventListener ("click", ()=> {
         console.log (producto);
-        AgregarAlCarrito(producto);
+        agregarAlCarrito(producto);
+        alertaBotonAgregar();
+
     });     
 });
 }
 
-function AgregarAlCarrito (producto){
+function agregarAlCarrito (producto){
     let existe = carrito.some ((productoSome) => productoSome.id === producto.id);
     if (existe === false) {
         producto.cantidad = 1;
@@ -99,10 +108,10 @@ function AgregarAlCarrito (producto){
         producto.cantidad++;
     }
     console.log(carrito);
-    VerProductosCarrito();
+    verProductosCarrito();
 }
 
-function VerProductosCarrito (producto){
+function verProductosCarrito (producto){
     carritoDeCompras.innerHTML = ""
     carrito.forEach (producto => {
     carritoDeCompras.innerHTML +=   `<tr>
@@ -116,21 +125,33 @@ function VerProductosCarrito (producto){
     
     localStorage.setItem("carrito",JSON.stringify (carrito))
 
-    BorrarProductoCarrito();
+    borrarProductoCarrito();
 }
 
-function BorrarProductoCarrito() {
+function borrarProductoCarrito() {
     carrito.forEach((producto) => {
         document
         .querySelector (`#botonBorrar${producto.id}`) 
         .addEventListener ("click", ()=> {
         carrito = carrito.filter((productoFilter) => productoFilter.id !== producto.id);
 
-        VerProductosCarrito(); 
+        verProductosCarrito(); 
     });      
 });
 }
 
+// Agregar Libreria SweetAlert2 - Cartel de aviso para cada pruducto agregado al carrito
+function alertaBotonAgregar(){
+    Swal.fire({
+        toast: true,
+        position: 'top-start',
+        icon: 'success',
+        title: 'EL PRODUCTO SE AGREGO AL CARRITO',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+
 focoEnCampos();
 crearCards ();
-AgregarAlCarrito();
+verProductosCarrito();
