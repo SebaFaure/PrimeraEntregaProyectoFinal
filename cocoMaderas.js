@@ -1,4 +1,3 @@
-
 // Variables y Constantes
 const contenedorProductos = document.querySelector("#contenedorProductos")
 const carritoDeCompras = document.querySelector("#carritoDeCompras")
@@ -152,13 +151,13 @@ function finalizarCompra() {
 // Funcion para mostrar una Alerta cuando se haga click en el boton comprar
 function confirmacionCompra() {
     Swal.fire({
-        title: 'ESTAS A SOLO UN PASO...',
-        text: "¡Click en COMPRAR para confirmar la compra!",
+        title: '¡Haz click para confirmar la compra!',
+        text: "______________________________________________",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'COMPRAR!'
+        confirmButtonText: 'CONFIRMAR!'
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
