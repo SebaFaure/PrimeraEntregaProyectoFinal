@@ -20,7 +20,7 @@
     <nav class="navbar bg-light">
       <div class="container-fluid">
         <a class="navbar-brand">
-          <img src="ImagenLogo.png" alt="" width="40" height="40">
+          <img src="imagenesProductos/ImagenLogo.png" alt="" width="40" height="40">
         </a>
         <form class="d-flex m-2" role="search">
           <input class="form me-2 border border-5" type="search" placeholder="  Producto..." aria-label="Search">
@@ -29,18 +29,26 @@
       </div>
     </nav>
   </header>
-  <div class="titulosPagina text-white bg-dark">
+  <div class="titulosPagina container text-white bg-dark">
     <h1 id="titulo">¡COCO MADERAS CORDOBA!</h1>
     <p id="parrafo">Somos una empresa dedicada a la fabricacion de productos en madera, destinados a satisfacer las
       necesidades del hogar</p>
+  </div>
+
+  <div class="container bg-white">
+    <h2 class="text-center mt-4 p-2"> LOS MAS VENDIDOS </h2>
+    <div class="container">
+      <div id="productosMasVendidos" class="container d-flex justify-content-evenly flex-wrap">
+      </div>
+    </div>
   </div>
 
   <div id="contenedorProductos" class="container d-flex justify-content-evenly flex-wrap">
 
   </div>
 
-  <div class="bg-white p-5 m-5">
-    <h1 class="text-center border border-dark">CARRITO DE COMPRAS</h1>
+  <div class="container bg-white border border-dark">
+    <h1 class="text-center mt-3 bg-dark text-white">CARRITO DE COMPRAS</h1>
     <table class="table table-white table-borderless">
       <thead">
         <tr class="">
@@ -56,14 +64,18 @@
       </tbody>
     </table>
 
-    <div class="text-center border border-dark">
-      <h2>TOTAL A PAGAR</h2>
-      <p>$</p>
+    <div id="TotalCarrito" class="container text-center">
+      <h2 class="text-center mt-3 bg-dark text-white">TOTAL A PAGAR</h2>
+      <p id="importeTotal" class="border border-dark"> $ </p>
+      <button id="botonComprar" class="btn btn-warning mb-3">COMPRAR</button>
     </div>
   </div>
 
-  <footer>
-
+  <footer class="container bg-dark text-white mt-2">
+    <div class="container d-flex justify-content-evenly">
+      <p>Contacto: 4965188    
+      <p>Direccion: Felix Frias 234. Cordoba Capital</p>
+    </div>
   </footer>
 
 </body>
